@@ -23,8 +23,13 @@
             {!! Form::email('email',null,['class'=>'form-control','placeholder'=>'ejemplo@mimail.com','required']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('passwordLabel','Password') !!}
-            {!! Form::password('password',['class'=>'form-control','placeholder'=>'***************************','required']) !!}
+            {!! Form::label('passwordLabel','Password') !!} <div class="label label-warning pull-right hidden" id="texto-password-igual" style="font-size:13px;">Los password ingresados no coinciden</div>
+            {!! Form::password('password',['class'=>'form-control','placeholder'=>'***************************','required','id'=>'password']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('passwordLabel','Re-Password') !!} <div class="label label-warning pull-right hidden" id="texto-re-password-igual" style="font-size:13px;">Los password ingresados no coinciden</div>
+            {!! Form::password('password2',['class'=>'form-control','placeholder'=>'***************************','required','id'=>'re-password']) !!}
         </div>
 
         <div class="form-group">

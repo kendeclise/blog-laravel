@@ -60,8 +60,8 @@ $(function() {
      * RESTRICCIONES, REGISTRO DE USUARIO, "EL NOMBRE DE LA PERSONA YA ESTÁ REGISTRADO"
      ***********************************************************************************************/
 
-    $('#nombre-registrar-usuario').blur(function(e){//Cuando se va el foco del campo txt Nombre del formulario registrar usuario, invoco el siguiente método
-        e.preventDefault();
+    $('#nombre-registrar-usuario').blur(function(){//Cuando se va el foco del campo txt Nombre del formulario registrar usuario, invoco el siguiente método
+
 
         var nombreUsuario = $('#nombre-registrar-usuario').val();
 
@@ -82,7 +82,44 @@ $(function() {
 
     });
 
+    /***********************************************************************************************
+     * RESTRICCIONES, DETECTA QUE EL PASSWORD y RE-PASSWORD SEAN IGUALES
+     ***********************************************************************************************/
+    $('#password').blur(function(){//Cuando se va el foco de la caja de texto password ejecuta la acción
+        var password = $('#password').val();
+        var re_password = $('#re-password').val();
 
+        if(re_password.length != 0){
+            if(password == re_password){
+                $('#texto-password-igual').removeClass('hidden');
+                $('#texto-password-igual').addClass('hidden');
+
+            }else{
+                $('#texto-password-igual').removeClass('hidden');
+
+            }
+        }
+
+
+    });
+
+    $('#re-password').blur(function(){//Cuando se va el foco de la caja de texto password ejecuta la acción
+        var password = $('#password').val();
+        var re_password = $('#re-password').val();
+
+        if(password.length != 0){
+            if(password != re_password){
+                $('#texto-re-password-igual').removeClass('hidden');
+                $('#texto-re-password-igual').addClass('hidden');
+
+            }else{
+                $('#texto-re-password-igual').removeClass('hidden');
+
+            }
+        }
+
+
+    });
 
 });
 
