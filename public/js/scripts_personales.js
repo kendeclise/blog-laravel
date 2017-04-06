@@ -57,7 +57,7 @@ $(function() {
 
 
     /***********************************************************************************************
-     * RESTRICCIONES, REGISTRO DE USUARIO, "EL NOMBRE DE LA PERSONA YA ESTÁ REGISTRADO"
+     * VALIDACIONES, REGISTRO DE USUARIO, "EL NOMBRE DE LA PERSONA YA ESTÁ REGISTRADO"
      ***********************************************************************************************/
 
     $('#nombre-registrar-usuario').blur(function(){//Cuando se va el foco del campo txt Nombre del formulario registrar usuario, invoco el siguiente método
@@ -68,6 +68,7 @@ $(function() {
         var form = $('#form-existe-usuario');
         var url = form.attr('action').replace(':USER_NAME',nombreUsuario);
 
+        //ajax
         $.get(url,function(respuesta){
             if(respuesta){//Si el usuario existe
                 $('#texto-usuario-ya-registrado').removeClass('hidden');
@@ -83,13 +84,42 @@ $(function() {
     });
 
     /***********************************************************************************************
-     * RESTRICCIONES, DETECTA QUE EL PASSWORD y RE-PASSWORD SEAN IGUALES
+     * VALIDACIONES, REGISTRO DE USUARIO, "EL CORREO DE LA PERSONA YA ESTÁ REGISTRADA
+     ***********************************************************************************************/
+
+    $('#email-registrar-usuario').blur(function(){//Cuando se va el foco del campo txt Nombre del formulario registrar usuario, invoco el siguiente método
+
+
+        var emailUsuario = $('#email-registrar-usuario').val();
+
+        var form = $('#form-existe-email');
+        var url = form.attr('action').replace(':USER_EMAIL',emailUsuario);
+
+        //ajax
+        $.get(url,function(respuesta){
+            if(respuesta){//Si el correo ya existe
+                $('#texto-email-ya-registrado').removeClass('hidden');
+
+            }else{
+                $('#texto-email-ya-registrado').removeClass('hidden');
+                $('#texto-email-ya-registrado').addClass('hidden');
+            }
+        });
+
+
+
+
+
+    });
+
+    /***********************************************************************************************
+     * VALIDACIONES, DETECTA QUE EL PASSWORD y RE-PASSWORD SEAN IGUALES
      ***********************************************************************************************/
     $('#password').blur(function(){//Cuando se va el foco de la caja de texto password ejecuta la acción
         var password = $('#password').val();
         var re_password = $('#re-password').val();
 
-        if(re_password.length != 0){
+        if(password.length != 0 && re_password != 0){
             if(password == re_password){
                 $('#texto-password-igual').removeClass('hidden');
                 $('#texto-password-igual').addClass('hidden');
@@ -107,13 +137,13 @@ $(function() {
         var password = $('#password').val();
         var re_password = $('#re-password').val();
 
-        if(password.length != 0){
-            if(password != re_password){
-                $('#texto-re-password-igual').removeClass('hidden');
-                $('#texto-re-password-igual').addClass('hidden');
+        if(password.length != 0 && re_password != 0){
+            if(password == re_password){
+                $('#texto-password-igual').removeClass('hidden');
+                $('#texto-password-igual').addClass('hidden');
 
             }else{
-                $('#texto-re-password-igual').removeClass('hidden');
+                $('#texto-password-igual').removeClass('hidden');
 
             }
         }

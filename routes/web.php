@@ -63,4 +63,9 @@ Route::group(['prefix'=>'admin'],function(){
         'as' => 'users.exists',//nombre de la ruta(opcional)
         'uses' => 'UsersController@existeUsuario' //que controlador llamará luego va el arroba y sigue el nombre de la función/método que invocará
     ]);
+
+    Route::get('users/mail-exists/{mail}',[
+        'as' => 'users.mail-exists',
+        'uses' => 'UsersController@existeCorreo'
+    ]);
 });

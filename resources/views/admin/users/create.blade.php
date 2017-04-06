@@ -19,8 +19,8 @@
             {!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre completo','required', 'id'=> 'nombre-registrar-usuario']) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('emailLabel','Email') !!}
-            {!! Form::email('email',null,['class'=>'form-control','placeholder'=>'ejemplo@mimail.com','required']) !!}
+            {!! Form::label('emailLabel','Email') !!} <div class="label label-primary pull-right hidden" id="texto-email-ya-registrado" style="font-size:13px;">El correo ingresado ya está registrado</div>
+            {!! Form::email('email',null,['class'=>'form-control','placeholder'=>'ejemplo@mimail.com','required','id'=>'email-registrar-usuario']) !!}
         </div>
         <div class="form-group">
             {!! Form::label('passwordLabel','Password') !!} <div class="label label-warning pull-right hidden" id="texto-password-igual" style="font-size:13px;">Los password ingresados no coinciden</div>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('passwordLabel','Re-Password') !!} <div class="label label-warning pull-right hidden" id="texto-re-password-igual" style="font-size:13px;">Los password ingresados no coinciden</div>
+            {!! Form::label('passwordLabel','Re-Password') !!}
             {!! Form::password('password2',['class'=>'form-control','placeholder'=>'***************************','required','id'=>'re-password']) !!}
         </div>
 
@@ -44,6 +44,8 @@
 
     <!-- formulario para hacer validaciones de existencia -->
     {!! Form::open(['route' => ['users.exists',':USER_NAME'], 'method' => 'GET' , 'id' => 'form-existe-usuario']) !!}
+    {!! Form::close() !!}
+    {!! Form::open(['route' => ['users.mail-exists',':USER_EMAIL'], 'method' => 'GET' , 'id' => 'form-existe-email']) !!}
     {!! Form::close() !!}
 @endsection
 

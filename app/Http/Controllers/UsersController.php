@@ -149,7 +149,7 @@ class UsersController extends Controller
     }
 
 
-    //Método de consulta, si encuentro al usuario devuelvo true, de otra manera devolveré false
+    //Método de consulta, si encuentro el nombre de usuario devuelvo true, de otra manera devolveré false
     public function existeUsuario(Request $request,$name){
 
 
@@ -167,5 +167,18 @@ class UsersController extends Controller
        return dd($user);
 
 
+    }
+
+    //Método de consulta, si encuentro el correo devuelvo true, de otra manera devolveré false
+    public function  existeCorreo(Request $request,$email){
+        $user = User::where('email',$email)->first();
+
+        if($request->ajax()){
+            if($user){
+                return "El correo ingresado ya está registrado";
+            }else{
+                return null;
+            }
+        }
     }
 }
