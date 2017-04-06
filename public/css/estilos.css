@@ -1,0 +1,31 @@
+body{
+    font-family: Raleway,sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #636b6f;
+}
+
+.footer-label{
+    color: #777;
+
+}
+
+.labelCabeceraPanel{
+    font-size: 24px;
+    color: #777;
+}
+
+.nav-footer{
+    background-color: white;
+    height:52px;
+    min-height: 52px;
+    max-height:52px;
+    border: #ddd solid 1px;
+    border-radius:4px;
+    padding-top:14px;
+}
+
+.footer-label a{
+    color:#777;
+}
+
